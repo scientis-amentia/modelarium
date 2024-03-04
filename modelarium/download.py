@@ -57,7 +57,7 @@ def create_modelfile(gguf_file: str, output_dir: str):
 def create_modelfile_template(gguf_file: str):
     template = f"""FROM ../{gguf_file}
 TEMPLATE \"\"\"
-<your amazing template goes here!!>
+<your template here>
 \"\"\"
 SYSTEM \"\"\"
 You are a helpful assistant.
