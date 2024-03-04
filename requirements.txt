@@ -1,0 +1,2 @@
+ollama==0.1.7
+huggingface-hub==0.21.3
