@@ -5,11 +5,24 @@ from huggingface_hub import hf_hub_download
 
 
 def download_model(
-    repo_id: str, filename: str, output_dir: str, redownload: bool = False
+    repo_id: str,
+    filename: str,
+    output_dir: str,
+    redownload: bool = False,
+    modelfile_subdir: str = "modelfiles",
 ):
+    """
+    Download a model from the huggingface hub to a specified directory. Will also create a starting Ollama modelfile in the specified modelfile_subdir.
+    Args:
+    - repo_id: The name of the model repository
+    - filename: The name of the file to download
+    - output_dir: The directory to save the model to
+    - redownload: Whether to redownload the model if it already exists in the output directory (default: False)
+
+    """
     file_exists = file_exists_in_dir(output_dir, filename)
 
-    if not file_exists or (redownload and file_exists):
+    if not file_exists or redownload:
         print(f"Downloading {filename} from {repo_id} to {output_dir}")
         hf_hub_download(
             repo_id=repo_id,
@@ -17,6 +30,7 @@ def download_model(
             local_dir=output_dir,
             local_dir_use_symlinks=False,
         )
+        create_modelfile(filename, os.path.join(output_dir, modelfile_subdir))
     else:
         print(f"File {filename} already exists in {output_dir}")
 
@@ -24,6 +38,32 @@ def download_model(
 # Function that takes a directory and a filename as input and determines whether the file exists in the directory
 def file_exists_in_dir(directory: str, filename: str) -> bool:
     return os.path.exists(os.path.join(directory, filename))
+
+
+# Function that takes a gguf file and an output directory as input and creates a starting Ollama modelfile in the output directory
+def create_modelfile(gguf_file: str, output_dir: str):
+    model_name = gguf_file.split(".gguf")[0]
+    modelfile = model_name + ".modelfile"
+    modelfile_path = os.path.join(output_dir, modelfile)
+
+    if file_exists_in_dir(output_dir, modelfile):
+        print(f"Modelfile {modelfile} already exists in {output_dir}")
+    else:
+        print(f"Creating modelfile {modelfile} in {output_dir}")
+        with open(modelfile_path, "w") as f:
+            f.write(create_modelfile_template(gguf_file))
+
+
+def create_modelfile_template(gguf_file: str):
+    template = f"""FROM ../{gguf_file}
+TEMPLATE \"\"\"
+<your amazing template goes here!!>
+\"\"\"
+SYSTEM \"\"\"
+You are a helpful assistant.
+\"\"\"
+"""
+    return template
 
 
 if __name__ == "__main__":
@@ -42,6 +82,12 @@ if __name__ == "__main__":
         help="Directory to save the model to",
         default="/archive/gguf",
     )
+    parser.add_argument(
+        "--modelfile_subdir",
+        type=str,
+        help="Directory to save a starting Ollama modelfile to",
+        default="modelfiles",
+    )
     args = parser.parse_args()
 
     repo_id = args.repo
@@ -53,4 +99,6 @@ if __name__ == "__main__":
     if filename is None:
         raise ValueError("file_name is required")
 
-    download_model(repo_id, filename, args.output_dir, args.redownload)
+    download_model(
+        repo_id, filename, args.output_dir, args.redownload, args.modelfile_subdir
+    )
