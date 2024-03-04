@@ -30,9 +30,13 @@ def download_model(
             local_dir=output_dir,
             local_dir_use_symlinks=False,
         )
-        create_modelfile(filename, os.path.join(output_dir, modelfile_subdir))
+        modelfile_path = os.path.join(output_dir, modelfile_subdir)
+        create_modelfile(filename, modelfile_path)
+        create_note(repo_id, os.path.join(modelfile_path, "notes"))
     else:
         print(f"File {filename} already exists in {output_dir}")
+
+    return
 
 
 # Function that takes a directory and a filename as input and determines whether the file exists in the directory
@@ -53,6 +57,23 @@ def create_modelfile(gguf_file: str, output_dir: str):
         with open(modelfile_path, "w") as f:
             f.write(create_modelfile_template(gguf_file))
 
+    return
+
+
+# Function that takes a repo ID and an output directory as input and creates a starting markdown note in the output directory
+def create_note(repo_id: str, output_dir: str):
+    note = repo_id.replace("/", "_") + ".md"
+    note_path = os.path.join(output_dir, note)
+
+    if file_exists_in_dir(output_dir, note):
+        print(f"Note {note} already exists in {output_dir}")
+    else:
+        print(f"Creating note {note} in {output_dir}")
+        with open(note_path, "w") as f:
+            f.write(create_note_template(repo_id))
+
+    return
+
 
 def create_modelfile_template(gguf_file: str):
     template = f"""FROM ../{gguf_file}
@@ -62,6 +83,19 @@ TEMPLATE \"\"\"
 SYSTEM \"\"\"
 You are a helpful assistant.
 \"\"\"
+"""
+    return template
+
+
+def create_note_template(repo_id: str):
+    template = f"""# Notes for {repo_id}
+[{repo_id}](https://huggingface.co/{repo_id})
+
+## Quants
+<quants go here>
+
+## Notes
+<notes here>
 """
     return template
 
