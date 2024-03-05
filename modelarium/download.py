@@ -18,8 +18,9 @@ def download_model(
     - filename: The name of the file to download
     - output_dir: The directory to save the model to
     - redownload: Whether to redownload the model if it already exists in the output directory (default: False)
-
     """
+
+    # download the model, if it doesn't already exist
     file_exists = file_exists_in_dir(output_dir, filename)
 
     if not file_exists or redownload:
@@ -30,11 +31,13 @@ def download_model(
             local_dir=output_dir,
             local_dir_use_symlinks=False,
         )
-        modelfile_path = os.path.join(output_dir, modelfile_subdir)
-        create_modelfile(filename, modelfile_path)
-        create_note(repo_id, os.path.join(modelfile_path, "notes"))
     else:
         print(f"File {filename} already exists in {output_dir}")
+
+    # create starting modelfile and note
+    modelfile_path = os.path.join(output_dir, modelfile_subdir)
+    create_modelfile(filename, modelfile_path)
+    create_note(repo_id, os.path.join(modelfile_path, "notes"))
 
     return
 
