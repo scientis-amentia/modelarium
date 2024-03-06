@@ -63,8 +63,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--action",
         type=str,
-        default="list",
-        choices=["create", "delete", "list", "update"],
+        default="info",
+        choices=["info", "create", "delete", "list", "update"],
     )
     args = parser.parse_args()
 
