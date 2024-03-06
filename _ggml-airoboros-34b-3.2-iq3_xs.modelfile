@@ -1,4 +1,4 @@
-FROM ../ggml-airoboros-34b-3.2-iq3_xs.gguf
+FROM ./models/ggml-airoboros-34b-3.2-iq3_xs.gguf
 TEMPLATE """
 <s>[INST] <<SYS>>
 {{ .System }}

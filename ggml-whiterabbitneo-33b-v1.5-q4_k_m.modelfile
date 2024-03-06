@@ -1,4 +1,4 @@
-FROM ../ggml-whiterabbitneo-33b-v1.5-q4_k_m.gguf
+FROM ./models/ggml-whiterabbitneo-33b-v1.5-q4_k_m.gguf
 TEMPLATE """
 SYSTEM:
 {{ .System }}

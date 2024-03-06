@@ -1,4 +1,4 @@
-FROM ../cognitivecomputations_laserxtral-Q3_K_M.gguf
+FROM ./models/cognitivecomputations_laserxtral-Q3_K_M.gguf
 TEMPLATE """{{ if and .First .System }}### Instruction:
 {{ .System }}
 {{ end }}

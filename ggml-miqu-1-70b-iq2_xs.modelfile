@@ -1,4 +1,4 @@
-FROM ../ggml-miqu-1-70b-iq2_xs.gguf
+FROM ./models/ggml-miqu-1-70b-iq2_xs.gguf
 TEMPLATE """[INST] {{ .System }}[/INST][INST]{{ .Prompt }} [/INST]"""
 PARAMETER stop "[INST]"
 PARAMETER stop "[/INST]"

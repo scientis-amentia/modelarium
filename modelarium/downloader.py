@@ -63,7 +63,7 @@ class Downloader:
                 f.write(self.create_note_template())
 
     def create_modelfile_template(self) -> str:
-        template = f"""FROM ../{self.filename}
+        template = f"""FROM ./models/{self.filename}
 TEMPLATE \"\"\"
 <your template here>
 \"\"\"

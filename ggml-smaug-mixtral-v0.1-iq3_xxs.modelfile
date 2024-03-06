@@ -1,4 +1,4 @@
-FROM ../ggml-smaug-mixtral-v0.1-iq3_xxs.gguf
+FROM ./models/ggml-smaug-mixtral-v0.1-iq3_xxs.gguf
 TEMPLATE """[INST] {{ .System }} {{ .Prompt }} [/INST]"""
 PARAMETER stop "[INST]"
 PARAMETER stop "[/INST]"

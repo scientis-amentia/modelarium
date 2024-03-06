@@ -1,4 +1,4 @@
-FROM ../Hercules-3.1-Mistral-7B-Q4_0.gguf
+FROM ./models/Hercules-3.1-Mistral-7B-Q4_0.gguf
 TEMPLATE """<|im_start|>system
 {{ .System }}<|im_end|>
 <|im_start|>user

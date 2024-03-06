@@ -1,4 +1,4 @@
-FROM ../laserxtral-IQ2_XXS.gguf
+FROM ./models/laserxtral-IQ2_XXS.gguf
 TEMPLATE """{{ if and .First .System }}### Instruction:
 {{ .System }}
 {{ end }}

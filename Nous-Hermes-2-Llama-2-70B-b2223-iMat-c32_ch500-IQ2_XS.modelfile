@@ -1,4 +1,4 @@
-FROM ../Nous-Hermes-2-Llama-2-70B-b2223-iMat-c32_ch500-IQ2_XS.gguf
+FROM ./models/Nous-Hermes-2-Llama-2-70B-b2223-iMat-c32_ch500-IQ2_XS.gguf
 TEMPLATE """<|im_start|>system
 {{ .System }}<|im_end|>
 <|im_start|>user

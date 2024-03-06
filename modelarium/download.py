@@ -79,7 +79,7 @@ def create_note(repo_id: str, output_dir: str):
 
 
 def create_modelfile_template(gguf_file: str):
-    template = f"""FROM ../{gguf_file}
+    template = f"""FROM ./models/{gguf_file}
 TEMPLATE \"\"\"
 <your template here>
 \"\"\"
