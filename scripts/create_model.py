@@ -11,7 +11,7 @@ def get_file_contents(directory, pattern):
     files = [f for f in os.listdir(directory) if re.match(pattern, f)]
     file_contents_dict = {}
     for file in sorted(files):
-        with open(file, "r") as f:
+        with open(os.path.join(directory, file), "r") as f:
             file_contents_dict[file] = f.read()
 
     return file_contents_dict
@@ -50,7 +50,7 @@ def display_model_info(file_contents: dict[str, str]):
 if __name__ == "__main__":
     # Parse commandline arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("--directory", type=str, default=".")
+    parser.add_argument("--directory", type=str, default="../")
     parser.add_argument("--pattern", type=str, default=".*\.modelfile")
     parser.add_argument("--host", type=str, default="http://localhost:11434")
     parser.add_argument("--namespace", type=str, default="mgmacleod")
@@ -63,7 +63,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--action",
         type=str,
-        default="create",
+        default="list",
         choices=["create", "delete", "list", "update"],
     )
     args = parser.parse_args()
