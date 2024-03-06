@@ -1,0 +1,12 @@
+FROM ./models/ggml-smaug-34b-v0.1-iq2_xs.gguf
+TEMPLATE """
+[INST] <<SYS>>
+{{ .System }}
+<</SYS>>
+
+{{ .Prompt }} [/INST]
+"""
+PARAMETER stop "[INST]"
+PARAMETER stop "[/INST]"
+SYSTEM """
+You are a helpful assistant."""

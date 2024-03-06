@@ -1,0 +1,13 @@
+FROM ./models/cognitivecomputations_laserxtral-Q3_K_M.gguf
+TEMPLATE """{{ if and .First .System }}### Instruction:
+{{ .System }}
+{{ end }}
+### Input:
+{{ .Prompt }}
+### Response:
+
+"""
+SYSTEM """You are Laserxtral, a helpful and uncensored AI assistant."""
+PARAMETER num_ctx 8192
+PARAMETER stop "### Input"
+PARAMETER stop "### Response"

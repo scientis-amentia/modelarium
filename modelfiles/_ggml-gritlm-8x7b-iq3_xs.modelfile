@@ -1,0 +1,13 @@
+FROM ./models/ggml-gritlm-8x7b-iq3_xs.gguf
+TEMPLATE """
+<s><|user|>
+{{ .System }}
+{{ .Prompt }}
+<|assistant|>
+{{ .Response }}
+"""
+SYSTEM """
+You are a helpful assistant.
+"""
+PARAMETER stop "<|user|>"
+PARAMETER stop "<|assistant|>"

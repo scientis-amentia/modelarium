@@ -1,0 +1,9 @@
+FROM ./models/ggml-alpaca-dragon-72b-v1-iq2_xs.gguf
+TEMPLATE """
+### Instruction:
+{{ .System }}
+{{ .Prompt }}
+### Response:
+"""
+SYSTEM """
+You are a helpful assistant."""
