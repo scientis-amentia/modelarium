@@ -15,7 +15,7 @@ class Downloader:
         self.modelfile_subdir = "modelfiles"
 
     def download_model(self):
-        file_exists = self.file_exists_in_dir()
+        file_exists = self.file_exists_in_dir(self.output_dir, self.filename)
 
         if not file_exists or self.redownload:
             print(
@@ -33,29 +33,32 @@ class Downloader:
         self.create_modelfile()
         self.create_note()
 
-    def file_exists_in_dir(self) -> bool:
-        return os.path.exists(os.path.join(self.output_dir, self.filename))
+    def file_exists_in_dir(self, directory: str, file: str) -> bool:
+        return os.path.exists(os.path.join(directory, file))
 
     def create_modelfile(self):
         model_name = self.filename.split(".gguf")[0]
         modelfile = model_name + ".modelfile"
-        modelfile_path = os.path.join(self.output_dir, self.modelfile_subdir, modelfile)
+        modelfiles_dir = os.path.join(self.output_dir, self.modelfile_subdir)
+        modelfile_path = os.path.join(modelfiles_dir, modelfile)
 
-        if self.file_exists_in_dir():
-            print(f"Modelfile {modelfile} already exists in {self.output_dir}")
+        if self.file_exists_in_dir(modelfiles_dir, modelfile):
+            print(f"Modelfile {modelfile} already exists in {modelfile_path}")
         else:
-            print(f"Creating modelfile {modelfile} in {self.output_dir}")
+            print(f"Creating modelfile {modelfile} in {modelfile_path}")
             with open(modelfile_path, "w") as f:
                 f.write(self.create_modelfile_template())
 
     def create_note(self):
-        note = self.repo_id.replace("/", "_") + ".md"
-        note_path = os.path.join(self.output_dir, note)
+        notes_dir = os.path.join(self.output_dir, self.modelfile_subdir, "notes")
 
-        if self.file_exists_in_dir():
-            print(f"Note {note} already exists in {self.output_dir}")
+        note = self.repo_id.replace("/", "_") + ".md"
+        note_path = os.path.join(notes_dir, note)
+
+        if self.file_exists_in_dir(notes_dir, note):
+            print(f"Note {note} already exists in {notes_dir}")
         else:
-            print(f"Creating note {note} in {self.output_dir}")
+            print(f"Creating note {note} in {notes_dir}")
             with open(note_path, "w") as f:
                 f.write(self.create_note_template())
 
@@ -119,6 +122,11 @@ if __name__ == "__main__":
     if filename is None:
         raise ValueError("file_name is required")
 
-    # download_model(
-    #     repo_id, filename, args.output_dir, args.redownload, args.modelfile_subdir
-    # )
+    downloader = Downloader(
+        repo_id=repo_id,
+        filename=filename,
+        output_dir=args.output_dir,
+        redownload=args.redownload,
+    )
+
+    downloader.download_model()
