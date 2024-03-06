@@ -1,0 +1,13 @@
+FROM ../ggml-codefuse-deepseek-33b-iq3_xs.gguf
+TEMPLATE """
+<s>system
+{{ .System }}
+<s>human
+{{ .Prompt }}
+<s>bot
+{{ .Response }}<｜end▁of▁sentence｜>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""
+PARAMETER stop "<｜end▁of▁sentence｜>"

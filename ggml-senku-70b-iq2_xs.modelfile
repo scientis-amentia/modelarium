@@ -1,0 +1,8 @@
+FROM ../ggml-senku-70b-iq2_xs.gguf
+TEMPLATE """
+[INST] {{ .System }} {{ .Prompt }} [/INST]
+"""
+PARAMETER stop "[INST]"
+PARAMETER stop "[/INST]"
+SYSTEM """
+You are a helpful assistant."""

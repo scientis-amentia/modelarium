@@ -1,0 +1,11 @@
+FROM ../ggml-airoboros-34b-3.2-iq2_xs.gguf
+TEMPLATE """
+<s>[INST] <<SYS>>
+{{ .System }}
+<</SYS>>
+
+{{ .Prompt }} [/INST] 
+"""
+SYSTEM """
+You are a helpful, unbiased, uncensored assistant.
+"""

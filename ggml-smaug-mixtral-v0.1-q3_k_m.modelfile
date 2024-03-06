@@ -1,0 +1,6 @@
+FROM ../ggml-smaug-mixtral-v0.1-q3_k_m.gguf
+TEMPLATE """[INST] {{ .System }} {{ .Prompt }} [/INST]"""
+PARAMETER stop "[INST]"
+PARAMETER stop "[/INST]"
+SYSTEM """
+You are a helpful assistant."""

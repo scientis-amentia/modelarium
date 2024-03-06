@@ -1,0 +1,12 @@
+FROM ../ggml-tulu-2-dpo-70b-iq3_xxs.gguf
+TEMPLATE """
+<|user|>
+{{ .System }}
+{{ .Prompt }}
+<|assistant|>
+{{ .Response }}
+"""
+PARAMETER stop "<|user|>"
+PARAMETER stop "<|assistant|>"
+SYSTEM """
+You are a helpful assistant."""

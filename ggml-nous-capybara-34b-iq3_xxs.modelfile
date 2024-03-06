@@ -1,0 +1,7 @@
+FROM ../ggml-nous-capybara-34b-iq3_xxs.gguf
+TEMPLATE """{{ .System }}
+USER: {{ .Prompt }}
+ASSISTANT: 
+"""
+SYSTEM """You are a helpful AI Assistant.
+"""
