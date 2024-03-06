@@ -1,6 +1,0 @@
-FROM ./models/ggml-mixtral-8x7b-instruct-v0.1-iq3_xxs.gguf
-TEMPLATE """[INST] {{ .System }} {{ .Prompt }} [/INST]"""
-PARAMETER stop "[INST]"
-PARAMETER stop "[/INST]"
-SYSTEM """
-You are a helpful assistant."""
