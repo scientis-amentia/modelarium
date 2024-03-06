@@ -1,4 +1,4 @@
-FROM ./models/ggml-deepseek-coder-33b-instruct-iq3_xxs.gguf
+FROM ../models/ggml-deepseek-coder-33b-instruct-iq3_xxs.gguf
 TEMPLATE """{{ .System }}
 ### Instruction:
 {{ .Prompt }}

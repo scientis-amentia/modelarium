@@ -1,4 +1,4 @@
-FROM ./models/ggml-nous-capybara-34b-iq3_xxs.gguf
+FROM ../models/ggml-nous-capybara-34b-iq3_xxs.gguf
 TEMPLATE """{{ .System }}
 USER: {{ .Prompt }}
 ASSISTANT: 

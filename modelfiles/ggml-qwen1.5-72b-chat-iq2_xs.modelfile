@@ -1,4 +1,4 @@
-FROM ./models/ggml-qwen1.5-72b-chat-iq2_xs.gguf
+FROM ../models/ggml-qwen1.5-72b-chat-iq2_xs.gguf
 TEMPLATE """
 {{ if .System }}<|im_start|>system
 {{ .System }}<|im_end|>{{ end }}<|im_start|>user

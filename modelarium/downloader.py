@@ -10,25 +10,27 @@ class Downloader:
     ):
         self.repo_id = repo_id
         self.filename = filename
-        self.output_dir = output_dir
+        self.models_dir = os.path.join(output_dir, "models")
+        self.modelfiles_dir = os.path.join(output_dir, "modelfiles")
+        self.notes_dir = os.path.join(output_dir, "notes")
         self.redownload = redownload
-        self.modelfile_subdir = "modelfiles"
+        # self.modelfile_subdir = "modelfiles"
 
     def download_model(self):
-        file_exists = self.file_exists_in_dir(self.output_dir, self.filename)
+        file_exists = self.file_exists_in_dir(self.models_dir, self.filename)
 
         if not file_exists or self.redownload:
             print(
-                f"Downloading {self.filename} from {self.repo_id} to {self.output_dir}"
+                f"Downloading {self.filename} from {self.repo_id} to {self.models_dir}"
             )
             hf_hub_download(
                 repo_id=self.repo_id,
                 filename=self.filename,
-                local_dir=self.output_dir,
+                local_dir=self.models_dir,
                 local_dir_use_symlinks=False,
             )
         else:
-            print(f"File {self.filename} already exists in {self.output_dir}")
+            print(f"File {self.filename} already exists in {self.models_dir}")
 
         self.create_modelfile()
         self.create_note()
@@ -39,10 +41,9 @@ class Downloader:
     def create_modelfile(self):
         model_name = self.filename.split(".gguf")[0]
         modelfile = model_name + ".modelfile"
-        modelfiles_dir = os.path.join(self.output_dir, self.modelfile_subdir)
-        modelfile_path = os.path.join(modelfiles_dir, modelfile)
+        modelfile_path = os.path.join(self.modelfiles_dir, modelfile)
 
-        if self.file_exists_in_dir(modelfiles_dir, modelfile):
+        if self.file_exists_in_dir(self.modelfiles_dir, modelfile):
             print(f"Modelfile {modelfile} already exists in {modelfile_path}")
         else:
             print(f"Creating modelfile {modelfile} in {modelfile_path}")
@@ -50,20 +51,20 @@ class Downloader:
                 f.write(self.create_modelfile_template())
 
     def create_note(self):
-        notes_dir = os.path.join(self.output_dir, self.modelfile_subdir, "notes")
+        # notes_dir = os.path.join(self.output_dir, self.modelfile_subdir, "notes")
 
         note = self.repo_id.replace("/", "_") + ".md"
-        note_path = os.path.join(notes_dir, note)
+        note_path = os.path.join(self.notes_dir, note)
 
-        if self.file_exists_in_dir(notes_dir, note):
-            print(f"Note {note} already exists in {notes_dir}")
+        if self.file_exists_in_dir(self.notes_dir, note):
+            print(f"Note {note} already exists in {self.notes_dir}")
         else:
-            print(f"Creating note {note} in {notes_dir}")
+            print(f"Creating note {note} in {self.notes_dir}")
             with open(note_path, "w") as f:
                 f.write(self.create_note_template())
 
     def create_modelfile_template(self) -> str:
-        template = f"""FROM ./models/{self.filename}
+        template = f"""FROM ../models/{self.filename}
 TEMPLATE \"\"\"
 <your template here>
 \"\"\"
@@ -103,7 +104,7 @@ if __name__ == "__main__":
         "--output_dir",
         type=str,
         help="Directory to save the model to",
-        default="/archive/gguf",
+        default="..",
     )
     parser.add_argument(
         "--modelfile_subdir",

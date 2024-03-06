@@ -1,4 +1,4 @@
-FROM ./models/ggml-senku-70b-iq2_xs.gguf
+FROM ../models/ggml-senku-70b-iq2_xs.gguf
 TEMPLATE """
 [INST] {{ .System }} {{ .Prompt }} [/INST]
 """

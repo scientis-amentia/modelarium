@@ -1,4 +1,4 @@
-FROM ./models/ggml-smaug-72b-v0.1-iq2_xs.gguf
+FROM ../models/ggml-smaug-72b-v0.1-iq2_xs.gguf
 TEMPLATE """
 [INST] <<SYS>>
 {{ .System }}

@@ -1,4 +1,4 @@
-FROM ./models/ggml-bagel-34b-v0.4-iq2_xs.gguf
+FROM ../models/ggml-bagel-34b-v0.4-iq2_xs.gguf
 TEMPLATE """
 [INST] <<SYS>>
 {{ .System }}

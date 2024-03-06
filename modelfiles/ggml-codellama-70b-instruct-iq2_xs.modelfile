@@ -1,4 +1,4 @@
-FROM ./models/ggml-codellama-70b-instruct-iq2_xs.gguf
+FROM ../models/ggml-codellama-70b-instruct-iq2_xs.gguf
 TEMPLATE """
 {{ if .System }} Source: system
 

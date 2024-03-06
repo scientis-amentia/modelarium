@@ -50,7 +50,7 @@ def display_model_info(file_contents: dict[str, str]):
 if __name__ == "__main__":
     # Parse commandline arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("--directory", type=str, default="../")
+    parser.add_argument("--directory", type=str, default="../modelfiles")
     parser.add_argument("--pattern", type=str, default=".*\.modelfile")
     parser.add_argument("--host", type=str, default="http://localhost:11434")
     parser.add_argument("--namespace", type=str, default="mgmacleod")

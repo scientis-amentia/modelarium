@@ -1,4 +1,4 @@
-FROM ./models/ggml-tulu-2-dpo-70b-iq2_xs.gguf
+FROM ../models/ggml-tulu-2-dpo-70b-iq2_xs.gguf
 TEMPLATE """
 <|user|>
 {{ .System }}

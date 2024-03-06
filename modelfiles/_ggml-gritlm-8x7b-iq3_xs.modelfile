@@ -1,4 +1,4 @@
-FROM ./models/ggml-gritlm-8x7b-iq3_xs.gguf
+FROM ../models/ggml-gritlm-8x7b-iq3_xs.gguf
 TEMPLATE """
 <s><|user|>
 {{ .System }}

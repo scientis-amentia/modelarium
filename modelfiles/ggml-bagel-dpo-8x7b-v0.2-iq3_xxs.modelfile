@@ -1,4 +1,4 @@
-FROM ./models/ggml-bagel-dpo-8x7b-v0.2-iq3_xxs.gguf
+FROM ../models/ggml-bagel-dpo-8x7b-v0.2-iq3_xxs.gguf
 TEMPLATE """
 [INST] <<SYS>>
 {{ .System }}

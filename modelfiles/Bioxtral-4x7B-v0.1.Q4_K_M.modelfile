@@ -1,4 +1,4 @@
-FROM ./models/Bioxtral-4x7B-v0.1.Q4_K_M.gguf
+FROM ../models/Bioxtral-4x7B-v0.1.Q4_K_M.gguf
 TEMPLATE """<|im_start|>system
 {{ .System }}<|im_end|>
 <|im_start|>user

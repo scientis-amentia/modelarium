@@ -1,4 +1,4 @@
-FROM ./models/ggml-codefuse-deepseek-33b-iq3_xs.gguf
+FROM ../models/ggml-codefuse-deepseek-33b-iq3_xs.gguf
 TEMPLATE """
 <s>system
 {{ .System }}
