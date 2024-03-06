@@ -47,6 +47,27 @@ def display_model_info(file_contents: dict[str, str]):
     return
 
 
+def copy_model(
+    source: str, dest: str, client: ollama.Client, namespace: str, dry_run: bool
+):
+    if "/" not in dest:
+        print(f"Destination {dest} should include a namespace. Adding {namespace}.")
+        dest = f"{namespace}/{dest}"
+
+    print(f"Copying model {source} to {dest} and deleting {source}.")
+
+    if dry_run:
+        return
+
+    try:
+        client.copy(source, dest)
+        client.delete(source)
+    except Exception as e:
+        print(f"Error copying model {source} to {dest}: {e}")
+
+    return
+
+
 if __name__ == "__main__":
     # Parse commandline arguments
     parser = argparse.ArgumentParser()
@@ -54,6 +75,8 @@ if __name__ == "__main__":
     parser.add_argument("--pattern", type=str, default=".*\.modelfile")
     parser.add_argument("--host", type=str, default="http://localhost:11434")
     parser.add_argument("--namespace", type=str, default="mgmacleod")
+    parser.add_argument("--source", type=str)
+    parser.add_argument("--dest", type=str)
     parser.add_argument(
         "--dry_run",
         action="store_true",
@@ -64,16 +87,17 @@ if __name__ == "__main__":
         "--action",
         type=str,
         default="info",
-        choices=["info", "create", "delete", "list", "update"],
+        choices=["info", "create", "copy"],
     )
     args = parser.parse_args()
 
     # Create a client
     client = Client(args.host)
 
-    # Get the file contents
-    file_contents = get_file_contents(args.directory, args.pattern)
-
     # Perform the action
     if args.action == "create":
+        # Get the file contents
+        file_contents = get_file_contents(args.directory, args.pattern)
         create_models(file_contents, client, args.namespace, args.dry_run)
+    elif args.action == "copy":
+        copy_model(args.source, args.dest, client, args.namespace, args.dry_run)

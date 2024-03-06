@@ -14,7 +14,6 @@ class Downloader:
         self.modelfiles_dir = os.path.join(output_dir, "modelfiles")
         self.notes_dir = os.path.join(output_dir, "notes")
         self.redownload = redownload
-        # self.modelfile_subdir = "modelfiles"
 
     def download_model(self):
         file_exists = self.file_exists_in_dir(self.models_dir, self.filename)
@@ -51,8 +50,6 @@ class Downloader:
                 f.write(self.create_modelfile_template())
 
     def create_note(self):
-        # notes_dir = os.path.join(self.output_dir, self.modelfile_subdir, "notes")
-
         note = self.repo_id.replace("/", "_") + ".md"
         note_path = os.path.join(self.notes_dir, note)
 
