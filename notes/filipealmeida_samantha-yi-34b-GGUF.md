@@ -2,7 +2,9 @@
 [filipealmeida/samantha-yi-34b-GGUF](https://huggingface.co/filipealmeida/samantha-yi-34b-GGUF)
 
 ## Quants
-<quants go here>
+- q4_0
 
 ## Notes
-<notes here>
+- grabbed the modelfile details from the [samantha-mistral](https://ollama.com/library/samantha-mistral) model
+- creation
+  - no issues
