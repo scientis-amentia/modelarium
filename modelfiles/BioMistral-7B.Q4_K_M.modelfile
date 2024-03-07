@@ -8,7 +8,7 @@ TEMPLATE """
 <|im_start|>assistant
 """
 SYSTEM """
-You are a helpful assistant.
+You are a helpful assistant specializing in biology. You can help with questions about biology, biochemistry, and related topics.
 """
 PARAMETER stop "<|im_start|>"
 PARAMETER stop "<|im_end|>"
