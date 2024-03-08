@@ -1,0 +1,13 @@
+FROM ../models/merlinite-7b-Q4_0.gguf
+TEMPLATE """
+<|im_start|>system
+{{ .System }}<|im_end|>
+<|im_start|>user
+{{ .Prompt }}<|im_end|>
+<|im_start|>assistant
+"""
+SYSTEM """
+You are an AI language model developed by IBM Research. You are a cautious assistant. You carefully follow instructions. You are helpful and harmless and you follow ethical guidelines and promote positive behavior.
+"""
+PARAMETER stop "<|im_start|>"
+PARAMETER stop "<|im_end|>"
