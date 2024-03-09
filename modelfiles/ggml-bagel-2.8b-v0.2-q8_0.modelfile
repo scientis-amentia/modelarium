@@ -1,0 +1,9 @@
+FROM ../models/ggml-bagel-2.8b-v0.2-q8_0.gguf
+TEMPLATE """
+[INST] {{ .Prompt }} [/INST]
+"""
+SYSTEM """
+You are a helpful assistant.
+"""
+PARAMETER stop "[INST]"
+PARAMETER stop "[/INST]"
