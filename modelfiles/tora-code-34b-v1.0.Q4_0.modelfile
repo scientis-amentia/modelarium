@@ -1,0 +1,7 @@
+FROM ../models/tora-code-34b-v1.0.Q4_0.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""
