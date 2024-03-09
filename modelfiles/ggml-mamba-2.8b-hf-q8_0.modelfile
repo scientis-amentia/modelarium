@@ -1,0 +1,7 @@
+FROM ../models/ggml-mamba-2.8b-hf-q8_0.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

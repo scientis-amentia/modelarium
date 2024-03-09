@@ -1,0 +1,7 @@
+FROM ../models/ggml-mambahermes-3b-q8_0.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""
