@@ -1,0 +1,8 @@
+FROM ../models/mistral-7b-v0.1-layla-v4-Q4_K_M-imat.gguf
+TEMPLATE """
+USER: {{ .Prompt }}
+ASSISTANT:
+
+"""
+SYSTEM """
+"""

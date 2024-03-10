@@ -1,0 +1,7 @@
+FROM ../models/opus-v1.2-7b-Q4_K_M-imatrix.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

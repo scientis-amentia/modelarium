@@ -1,0 +1,7 @@
+FROM ../models/sciphi-self-rag-mistral-7b-32k.Q4_K_M.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

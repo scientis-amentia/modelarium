@@ -1,0 +1,7 @@
+FROM ../models/v2_Kunocchini-7b-128k-test-Q4_K_M-imatrix.gguf
+TEMPLATE """
+{{ .System }}
+{{ .Prompt }}
+"""
+SYSTEM """
+"""

@@ -1,0 +1,10 @@
+FROM ../models/Yi-34B-200K-RPMerge-IQ2_XS.gguf
+TEMPLATE """
+SYSTEM: {{ .System }}
+USER: {{ .Prompt }}
+ASSISTANT:
+
+"""
+SYSTEM """
+You are a helpful creative writing assistant.
+"""
