@@ -1,0 +1,4 @@
+FROM ../models/Mistral-7B-Instruct-v0.2-Neural-Story-Q4_K_M.gguf
+TEMPLATE """[INST] {{ .Prompt }} [/INST]"""
+PARAMETER stop "[INST]"
+PARAMETER stop "[/INST]"

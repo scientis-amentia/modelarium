@@ -1,0 +1,9 @@
+FROM ../models/mixtral-8x7b-moe-rp-story.Q4_0.gguf
+TEMPLATE """
+{{ .System }}
+
+{{ .Prompt }}
+"""
+SYSTEM """
+Please help to develop the story.
+"""

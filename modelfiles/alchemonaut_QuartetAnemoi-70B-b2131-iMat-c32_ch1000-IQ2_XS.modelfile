@@ -1,0 +1,4 @@
+FROM ../models/alchemonaut_QuartetAnemoi-70B-b2131-iMat-c32_ch1000-IQ2_XS.gguf
+TEMPLATE """[INST]{{ .Prompt }} [/INST]"""
+PARAMETER stop "[INST]"
+PARAMETER stop "[/INST]"

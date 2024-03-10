@@ -1,0 +1,9 @@
+FROM ../models/llama2-13b-tiefighterlr.Q4_0.gguf
+TEMPLATE """
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
+### Instruction:
+{{ .Prompt }}
+
+### Response:
+"""
