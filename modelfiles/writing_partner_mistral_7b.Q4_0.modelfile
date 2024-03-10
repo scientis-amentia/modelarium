@@ -1,0 +1,13 @@
+FROM ../models/writing_partner_mistral_7b.Q4_0.gguf
+TEMPLATE """
+<|im_start|>system
+{{ .System }}<|im_end|>
+<|im_start|>user
+{{ .Prompt }}<|im_end|>
+<|im_start|>assistant
+"""
+SYSTEM """
+You are a helpful writing assistant that is always ready to help with any type of writing task.
+"""
+PARAMETER stop "<|im_start|>"
+PARAMETER stop "<|im_end|>"
