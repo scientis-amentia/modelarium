@@ -8,6 +8,13 @@ from ollama import Client
 
 # Function that takes a directory and a pattern and returns a list of files with names that match the pattern
 def get_file_contents(directory, pattern):
+    """Returns a dictionary of files and their contents in the given directory that match the pattern.
+
+    Args:
+        directory (str): The directory to search for files in.
+        pattern (str): The pattern to match file names against.
+
+    """
     files = [f for f in os.listdir(directory) if re.match(pattern, f)]
     file_contents_dict = {}
     for file in sorted(files):
@@ -20,6 +27,15 @@ def get_file_contents(directory, pattern):
 def create_models(
     file_contents: dict[str, str], client: ollama.Client, namespace: str, dry_run: bool
 ):
+    """Creates models from the given file contents.
+
+    Args:
+        file_contents (dict[str, str]): A dictionary of files and their contents. The file contents are expected to be Ollama modelfiles.
+        client (ollama.Client): The Ollama client to use for creating models.
+        namespace (str): The namespace to create the models in.
+        dry_run (bool): Whether to run the script without making any changes or performing any actions.
+
+    """
     # Add the file contents to the model
     for file, contents in file_contents.items():
         model_name = file.split(".modelfile")[0]
@@ -41,6 +57,12 @@ def create_models(
 
 
 def display_model_info(file_contents: dict[str, str]):
+    """Displays information about the models in the given file contents.
+
+    Args:
+        file_contents (dict[str, str]): A dictionary of files and their contents. The file contents are expected to be Ollama modelfiles.
+
+    """
     for file, contents in file_contents.items():
         print(file)
 
@@ -50,6 +72,18 @@ def display_model_info(file_contents: dict[str, str]):
 def copy_model(
     source: str, dest: str, client: ollama.Client, namespace: str, dry_run: bool
 ):
+    """Copies a model from source to dest and deletes the source model.
+
+    Args:
+        source (str): The name of the source model.
+        dest (str): The name of the destination model.
+        client (ollama.Client): The Ollama client to use for copying models.
+        namespace (str): The namespace to create the models in.
+        dry_run (bool): Whether to run the script without making any changes or performing any actions.
+
+    """
+    # Add the namespace if it's not in the destination
+
     if "/" not in dest:
         print(f"Destination {dest} should include a namespace. Adding {namespace}.")
         dest = f"{namespace}/{dest}"

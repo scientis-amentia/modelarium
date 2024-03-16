@@ -5,6 +5,8 @@ from huggingface_hub import hf_hub_download
 
 
 class Downloader:
+    """Download a model from huggingface hub, create a starting Ollama modelfile for it, and create a note in Markdown format for documentation."""
+
     def __init__(
         self, repo_id: str, filename: str, output_dir: str, redownload: bool = False
     ):
@@ -16,6 +18,8 @@ class Downloader:
         self.redownload = redownload
 
     def download_model(self):
+        """Download the model from huggingface hub and create a modelfile and note for it."""
+
         file_exists = self.file_exists_in_dir(self.models_dir, self.filename)
 
         if not file_exists or self.redownload:
@@ -38,6 +42,17 @@ class Downloader:
         return os.path.exists(os.path.join(directory, file))
 
     def create_modelfile(self):
+        """Create a basic Ollama modelfile for the downloaded model.
+        The modelfile is a text file that contains the following:
+        - FROM <model>
+        - TEMPLATE "<your template here>"
+        - SYSTEM "You are a helpful assistant."
+
+        The modelfile is created in the same directory as the downloaded model.
+        The modelfile is named <model name>.modelfile
+
+        """
+
         model_name = self.filename.split(".gguf")[0]
         modelfile = model_name + ".modelfile"
         modelfile_path = os.path.join(self.modelfiles_dir, modelfile)
@@ -50,6 +65,16 @@ class Downloader:
                 f.write(self.create_modelfile_template())
 
     def create_note(self):
+        """Create a note for the downloaded model.
+        The note is a markdown file that contains the following:
+        - [model name](https://huggingface.co/model_name)
+        - Quants
+        - Notes
+
+        The note is created in the same directory as the downloaded model.
+        The note is named <model name>.md
+
+        """
         note = self.repo_id.replace("/", "_") + ".md"
         note_path = os.path.join(self.notes_dir, note)
 
