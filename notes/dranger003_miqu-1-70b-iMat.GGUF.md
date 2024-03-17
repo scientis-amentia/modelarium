@@ -2,7 +2,11 @@
 [dranger003/miqu-1-70b-iMat.GGUF](https://huggingface.co/dranger003/miqu-1-70b-iMat.GGUF)
 
 ## Quants
-<quants go here>
+- iq2_xs
+- iq2_xxs
+- iq3_xxs
 
 ## Notes
-<notes here>
+- creation and intial tests
+  - no issues
+  - performance is good
