@@ -1,0 +1,6 @@
+FROM ../models/ggml-miqu-1-70b-iq3_xxs.gguf
+TEMPLATE """[INST] {{ .System }}[/INST][INST]{{ .Prompt }} [/INST]"""
+PARAMETER stop "[INST]"
+PARAMETER stop "[/INST]"
+SYSTEM """
+You are a helpful assistant."""
