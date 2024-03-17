@@ -8,3 +8,6 @@
 ## Notes
 - creation
   - no issues
+- usage
+   - loads without issues
+   - runs very slowly

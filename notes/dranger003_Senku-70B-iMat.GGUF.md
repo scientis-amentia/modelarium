@@ -8,3 +8,6 @@
 - iq2_xs
   - creation
     - no issues
+  - usage
+    - no issues
+    - runs reasonably quickly
