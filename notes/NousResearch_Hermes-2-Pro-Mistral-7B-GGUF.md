@@ -2,7 +2,8 @@
 [NousResearch/Hermes-2-Pro-Mistral-7B-GGUF](https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B-GGUF)
 
 ## Quants
-<quants go here>
+- q4_0
 
 ## Notes
-<notes here>
+- creation and initial tests
+  - no issues

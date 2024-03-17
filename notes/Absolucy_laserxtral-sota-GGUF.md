@@ -5,6 +5,7 @@
 - iq2_xs
 - iq2_xxs
 - iq3_xxs
+- q3_k_xs
 
 ## Notes
 - iq2_xs
@@ -16,3 +17,6 @@
 - iq3_xxs
   - creation
     - no issues
+- q3_k_xs
+   - creation
+      - no issues
