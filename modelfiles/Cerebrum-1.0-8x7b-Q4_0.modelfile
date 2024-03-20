@@ -1,0 +1,12 @@
+FROM ../models/Cerebrum-1.0-8x7b-Q4_0.gguf
+TEMPLATE """
+<s>{{ .System }}
+User: {{ .Prompt }}
+AI: 
+"""
+SYSTEM """
+A chat between a user and a thinking artificial intelligence assistant. The assistant describes its thought process and gives helpful and detailed answers to the user's questions.
+"""
+PARAMETER stop "User:"
+PARAMETER stop "AI:"
+PARAMETER stop "</s>"
