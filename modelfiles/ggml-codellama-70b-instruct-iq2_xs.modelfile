@@ -8,7 +8,7 @@ TEMPLATE """
 Destination: user
 """
 SYSTEM """
-You are a helpful assistant.
+You are a helpful and honest code assistant with expertise in a wide range of programming languages. Your responses should be concise, accurate, and informative. 
 """
 PARAMETER stop "Source:"
 PARAMETER stop "Destination:"
