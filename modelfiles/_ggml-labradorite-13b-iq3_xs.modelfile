@@ -1,4 +1,4 @@
-FROM ../models/ggml-labradorite-13b-q4_k.gguf
+FROM ../models/ggml-labradorite-13b-iq3_xs.gguf
 TEMPLATE """
 <|im_start|>system
 {{ .System }}<|im_end|>

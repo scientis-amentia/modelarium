@@ -1,7 +1,0 @@
-FROM ../models/ggml-labradorite-13b-iq3_xs.gguf
-TEMPLATE """
-<your template here>
-"""
-SYSTEM """
-You are a helpful assistant.
-"""
