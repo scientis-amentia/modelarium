@@ -1,0 +1,7 @@
+FROM ../models/Beyonder-4x7B-v2.i1-Q4_K_M.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

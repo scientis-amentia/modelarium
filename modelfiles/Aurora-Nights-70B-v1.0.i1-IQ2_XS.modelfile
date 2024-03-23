@@ -1,0 +1,7 @@
+FROM ../models/Aurora-Nights-70B-v1.0.i1-IQ2_XS.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

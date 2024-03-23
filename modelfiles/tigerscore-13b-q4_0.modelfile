@@ -1,0 +1,7 @@
+FROM ../models/tigerscore-13b-q4_0.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

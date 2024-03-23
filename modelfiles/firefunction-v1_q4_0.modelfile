@@ -1,0 +1,80 @@
+FROM ../models/firefunction-v1_q4_0.gguf
+TEMPLATE """
+<s>SYSTEM: {{ .System }}
+
+USER: {{ .Prompt }}
+
+ASSISTANT: 
+"""
+SYSTEM """
+You are a helpful assistant with access to functions. Use them if required.
+
+FUNCTIONS: [
+  {
+    "type": "function",
+    "function": {
+      "name": "get_the_weather",
+      "description": "Get the weather",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string",
+            "description": "The city to get the weather for"
+          },
+          "state": {
+            "type": "string",
+            "description": "The state to get the weather for"
+          }
+        },
+        "required": [
+          "city",
+          "state"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+       "name": "get_stock_price",
+       "description": "Get the stock price",
+       "parameters": {
+          "type": "object",
+          "properties": {
+              "symbol": {
+                "type": "string",
+                "description": "The stock symbol to get the price for (e.g., AAPL, GOOG"
+                }
+            },
+            "required": [
+                "symbol"
+            ]
+        }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "search_arxiv_for_articles",
+      "description": "Search arXiv for articles",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "The search query to use (e.g., 'machine learning')"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    }
+  }
+]
+"""
+PARAMETER num_ctx 4096
+PARAMETER temperature 0.1
+PARAMETER stop "</s>"
+

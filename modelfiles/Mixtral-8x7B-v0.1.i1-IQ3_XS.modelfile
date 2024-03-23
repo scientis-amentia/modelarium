@@ -1,0 +1,7 @@
+FROM ../models/Mixtral-8x7B-v0.1.i1-IQ3_XS.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

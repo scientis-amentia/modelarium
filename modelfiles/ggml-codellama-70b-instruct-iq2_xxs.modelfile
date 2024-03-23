@@ -1,0 +1,15 @@
+FROM ../models/ggml-codellama-70b-instruct-iq2_xxs.gguf
+TEMPLATE """
+{{ if .System }} Source: system
+
+ {{ .System }} <step>{{ end }} Source: user
+
+ {{ .Prompt }} <step> Source: assistant
+Destination: user
+"""
+SYSTEM """
+You are a helpful and honest code assistant with expertise in a wide range of programming languages. Your responses should be concise, accurate, and informative. 
+"""
+PARAMETER stop "Source:"
+PARAMETER stop "Destination:"
+PARAMETER stop "<step>"

@@ -1,0 +1,7 @@
+FROM ../models/Llama-2-7b-chat-hf-function-calling-v3.Q6_K.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

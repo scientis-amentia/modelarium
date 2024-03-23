@@ -1,0 +1,7 @@
+FROM ../models/sqlcoder-7b-q5_k_m.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

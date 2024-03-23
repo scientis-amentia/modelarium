@@ -1,0 +1,7 @@
+FROM ../models/functionary-7b-v1.Q5_K.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

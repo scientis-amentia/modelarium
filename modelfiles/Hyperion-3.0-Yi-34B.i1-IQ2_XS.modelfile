@@ -1,0 +1,12 @@
+FROM ../models/Hyperion-3.0-Yi-34B.i1-IQ2_XS.gguf
+TEMPLATE """<|im_start|>system
+{{ .System }}<|im_end|>
+<|im_start|>user
+{{ .Prompt }}<|im_end|>
+<|im_start|>assistant
+"""
+SYSTEM """
+You are a helpful assistant.
+"""
+PARAMETER stop "<|im_start|>"
+PARAMETER stop "<|im_end|>"

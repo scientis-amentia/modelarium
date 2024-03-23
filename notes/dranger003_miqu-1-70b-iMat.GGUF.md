@@ -10,3 +10,4 @@
 - creation and intial tests
   - no issues
   - performance is good
+- prompt format [discussion](https://huggingface.co/miqudev/miqu-1-70b/discussions/25)

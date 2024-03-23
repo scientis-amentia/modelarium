@@ -1,0 +1,7 @@
+FROM ../models/westlake-7b-v2.Q5_K_M.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

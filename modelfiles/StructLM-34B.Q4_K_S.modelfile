@@ -1,0 +1,7 @@
+FROM ../models/StructLM-34B.Q4_K_S.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

@@ -1,0 +1,7 @@
+FROM ../models/Maverick-Math-7B-Q4_0.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

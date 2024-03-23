@@ -1,0 +1,7 @@
+FROM ../models/cerebrum-1.0-8x7b_q4_k_m.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

@@ -1,0 +1,15 @@
+FROM ../models/StructLM-13B.Q4_K_M.gguf
+TEMPLATE """
+[INST] [INST] <<SYS>>
+{{ .System }}
+<</SYS>>
+{{ .Prompt }} [/INST] [/INST]
+"""
+SYSTEM """
+You are an AI assistant that specializes in analyzing and reasoning
+over structured information. You will be given a task, optionally
+with some structured knowledge input. Your answer must strictly
+adhere to the output format, if specified.
+"""
+PARAMETER stop "[INST]"
+PARAMETER stop "[/INST]"

@@ -5,4 +5,9 @@
 - q5_k_m
 
 ## Notes
-<notes here>
+- creation 
+  - no issues
+- inference
+  - no issues so far
+  - responses seem ok
+  - no extraneous tokens in the response

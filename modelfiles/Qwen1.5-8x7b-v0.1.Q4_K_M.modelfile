@@ -1,0 +1,7 @@
+FROM ../models/Qwen1.5-8x7b-v0.1.Q4_K_M.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

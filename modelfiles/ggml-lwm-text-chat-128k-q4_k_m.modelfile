@@ -1,0 +1,11 @@
+FROM ../models/ggml-lwm-text-chat-128k-q4_k_m.gguf
+TEMPLATE """
+{{ .System }}
+USER:
+{{ .Prompt }}
+ASSISTANT:
+{{ .Response }}
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

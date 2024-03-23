@@ -1,0 +1,7 @@
+FROM ../models/aya-101.Q4_0.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

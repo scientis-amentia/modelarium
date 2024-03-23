@@ -1,0 +1,7 @@
+FROM ../models/opus-v1-34b.Q4_K_M.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""

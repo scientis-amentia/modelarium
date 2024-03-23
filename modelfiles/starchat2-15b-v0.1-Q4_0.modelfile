@@ -1,0 +1,12 @@
+FROM ../models/starchat2-15b-v0.1-Q4_0.gguf
+TEMPLATE """<|im_start|>system
+{{ .System }}<|im_end|>
+<|im_start|>user
+{{ .Prompt }}<|im_end|>
+<|im_start|>assistant
+"""
+SYSTEM """
+You are StarChat2, an expert programming assistant.
+"""
+PARAMETER stop "<|im_start|>"
+PARAMETER stop "<|im_end|>"

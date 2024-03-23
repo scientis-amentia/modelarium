@@ -1,0 +1,3 @@
+FROM joefamous/firefunction-v1:q4_0
+PARAMETER num_gpu -1
+PARAMETER temperature 0.1
