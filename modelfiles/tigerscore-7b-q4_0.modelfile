@@ -19,5 +19,5 @@ Your evaluation output:
 {{ .Response }}
 """
 SYSTEM """
-Be excellent to each other.
+Tell me a joke.
 """
