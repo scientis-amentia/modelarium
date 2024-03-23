@@ -1,4 +1,10 @@
 FROM ../models/Mistral-7B-Instruct-v0.2-Neural-Story-Q4_K_M.gguf
-TEMPLATE """[INST] {{ .Prompt }} [/INST]"""
+TEMPLATE """[INST] 
+### Instruction: {{ .System }}
+{{ .Prompt }} 
+[/INST]"""
 PARAMETER stop "[INST]"
 PARAMETER stop "[/INST]"
+SYSTEM """
+You are a helpful AI writing assistant.
+"""

@@ -9,4 +9,5 @@
   - no issues
 - usage
   - no issues so far
-  - 
+- prompt template
+  - added a system prompt with `### Instruction: {{ .System }}` and it works well so far. 
