@@ -1,7 +1,53 @@
 FROM ../models/sqlcoder-7b-q5_k_m.gguf
 TEMPLATE """
-<your template here>
+### Task
+Generate a SQL query to answer [QUESTION]{{ .Prompt }}[/QUESTION]
+
+### Database Schema
+The query will run on a database with the following schema:
+{{ .System }}
+
+### Answer
+Given the database schema, here is the SQL query that [QUESTION]{{ .Prompt }}[/QUESTION]
+[SQL]
+
 """
 SYSTEM """
-You are a helpful assistant.
+CREATE TABLE users (
+        user_id SERIAL PRIMARY KEY,
+        username VARCHAR(50) NOT NULL,
+        email VARCHAR(100) NOT NULL,
+        password_hash TEXT NOT NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+CREATE TABLE projects (
+    project_id SERIAL PRIMARY KEY,
+    project_name VARCHAR(100) NOT NULL,
+    description TEXT,
+    start_date DATE,
+    end_date DATE,
+    owner_id INTEGER REFERENCES users(user_id)
+);
+CREATE TABLE tasks (
+    task_id SERIAL PRIMARY KEY,
+    task_name VARCHAR(100) NOT NULL,
+    description TEXT,
+    due_date DATE,
+    status VARCHAR(50),
+    project_id INTEGER REFERENCES projects(project_id)
+);
+CREATE TABLE taskassignments (
+    assignment_id SERIAL PRIMARY KEY,
+    task_id INTEGER REFERENCES tasks(task_id),
+    user_id INTEGER REFERENCES users(user_id),
+    assigned_date DATE NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE comments (
+    comment_id SERIAL PRIMARY KEY,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    task_id INTEGER REFERENCES tasks(task_id),
+    user_id INTEGER REFERENCES users(user_id)
+);
 """
+PARAMETERS stop "[/SQL]"

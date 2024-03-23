@@ -5,4 +5,6 @@
 <quants go here>
 
 ## Notes
-<notes here>
+- prompt template
+  - [model card](https://huggingface.co/defog/sqlcoder-7b-2#prompt)
+  - [tokenizer config](https://huggingface.co/defog/sqlcoder-7b-2/blob/main/tokenizer_config.json)
