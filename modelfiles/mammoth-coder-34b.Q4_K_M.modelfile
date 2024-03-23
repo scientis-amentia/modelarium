@@ -1,7 +1,9 @@
 FROM ../models/mammoth-coder-34b.Q4_K_M.gguf
 TEMPLATE """
-<your template here>
-"""
-SYSTEM """
-You are a helpful assistant.
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
+### Instruction:
+{{ .Prompt }}
+
+### Response:
 """
