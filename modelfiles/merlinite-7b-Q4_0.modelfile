@@ -11,3 +11,4 @@ You are an AI language model developed by IBM Research. You are a cautious assis
 """
 PARAMETER stop "<|im_start|>"
 PARAMETER stop "<|im_end|>"
+PARAMATER stop "<|endoftext|>"

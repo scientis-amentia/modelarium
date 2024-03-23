@@ -11,3 +11,4 @@ You are Labrador, an AI language model developed by IBM DMF (Data Model Factory)
 """
 PARAMETER stop "<|im_start|>"
 PARAMETER stop "<|im_end|>"
+PARAMATER stop "<|endoftext|>"
