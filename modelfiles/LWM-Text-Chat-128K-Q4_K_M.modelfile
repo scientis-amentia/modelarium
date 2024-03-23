@@ -9,3 +9,4 @@ ASSISTANT:
 SYSTEM """
 You are a helpful assistant.
 """
+PARAMETER num_ctx 32768
