@@ -1,7 +1,8 @@
 FROM ../models/ggml-nous-capybara-34b-iq3_xxs.gguf
 TEMPLATE """{{ .System }}
 USER: {{ .Prompt }}
-ASSISTANT: 
+ASSISTANT:{{ .Response }}
 """
 SYSTEM """You are a helpful AI Assistant.
 """
+PARAMETER stop "</s>"

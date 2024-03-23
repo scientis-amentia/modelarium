@@ -1,7 +1,23 @@
 FROM ../models/functionary-small-v2.2.q4_0.gguf
 TEMPLATE """
-<your template here>
+<|from|>system
+<|recipient|>all
+<|content|>{{ .System }}
+<|from|>system
+<|recipient|>all
+<|content|>A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions. The assistant calls functions with appropriate input when necessary
+<|from|>user
+<|recipient|>all
+<|content|>{{ .Prompt }}
 """
 SYSTEM """
-You are a helpful assistant.
+// Supported function definitions that should be called when necessary.
+namespace functions {
+// Get the current weather
+type get_current_weather = (_: {
+// The city and state, e.g. San Francisco, CA
+location: string,
+}) => any;
+} // namespace functions
 """
+PARAMETER stop "<|stop|>"

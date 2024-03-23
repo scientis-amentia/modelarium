@@ -5,4 +5,5 @@
 <quants go here>
 
 ## Notes
-<notes here>
+- prompt format based on 
+  - https://huggingface.co/TIGER-Lab/StructLM-7B#prompt-format

@@ -1,0 +1,7 @@
+FROM ../models/ggml-bagel-34b-v0.4-iq3_xxs.gguf
+TEMPLATE """
+<your template here>
+"""
+SYSTEM """
+You are a helpful assistant.
+"""
