@@ -1,7 +1,0 @@
-FROM ../models/natural-sql-7b.Q4_1.gguf
-TEMPLATE """
-<your template here>
-"""
-SYSTEM """
-You are a helpful assistant.
-"""
